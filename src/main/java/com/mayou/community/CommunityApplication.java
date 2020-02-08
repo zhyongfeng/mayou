@@ -1,4 +1,4 @@
-package bro.mayou.community;
+package com.mayou.community;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

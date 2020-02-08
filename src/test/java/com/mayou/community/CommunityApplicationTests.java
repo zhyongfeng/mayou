@@ -1,6 +1,6 @@
-package bro.mayou.community;
+package com.mayou.community;
 
-import bro.mayou.community.controller.HelloController;
+import com.mayou.community.controller.HelloController;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
