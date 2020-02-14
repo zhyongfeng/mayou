@@ -1,6 +1,5 @@
 package com.mayou.community;
 
-import com.mayou.community.controller.HelloController;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
@@ -18,7 +17,7 @@ class CommunityApplicationTests {
     void contextLoads() {
     }
 
-    @WebMvcTest(controllers = HelloController.class)
+    @WebMvcTest(controllers = com.mayou.community.controller.IndexController.class)
     public static class ServingnWebContentApplicationTest {
 
         @Autowired
@@ -26,22 +25,10 @@ class CommunityApplicationTests {
 
         @Test
         public void homePage() throws Exception {
-            // N.B. jsoup can be useful for asserting HTML content
             mockMvc.perform(get("/index.html"))
                     .andExpect(content().string(containsString("Get your greeting")));
         }
 
-        @Test
-        public void greeting() throws Exception {
-            mockMvc.perform(get("/greeting"))
-                    .andExpect(content().string(containsString("Hello, World!")));
-        }
-
-        @Test
-        public void greetingWithUser() throws Exception {
-            mockMvc.perform(get("/greeting").param("name", "Greg"))
-                    .andExpect(content().string(containsString("Hello, Greg!")));
-        }
 
     }
 }
