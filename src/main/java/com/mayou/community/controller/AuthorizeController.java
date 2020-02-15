@@ -3,15 +3,12 @@ package com.mayou.community.controller;
 import com.mayou.community.dto.AccessTokenDTO;
 import com.mayou.community.dto.GithubUser;
 import com.mayou.community.provider.GithubProvider;
-import okhttp3.Request;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-
 import javax.servlet.http.HttpServletRequest;
-import javax.xml.bind.Element;
 
 /**
  * @author yfzhang
