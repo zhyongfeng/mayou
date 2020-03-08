@@ -1,0 +1,658 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mayou.community.dao.UserDao">
+  <resultMap id="BaseResultMap" type="com.mayou.community.pojo.User">
+    <id column="ID" jdbcType="INTEGER" property="id" />
+    <result column="ACCOUNT_ID" jdbcType="VARCHAR" property="accountId" />
+    <result column="NAME" jdbcType="VARCHAR" property="name" />
+    <result column="TOKEN" jdbcType="VARCHAR" property="token" />
+    <result column="GMT_CREATE" jdbcType="BIGINT" property="gmtCreate" />
+    <result column="GMT_MODIFIED" jdbcType="BIGINT" property="gmtModified" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ID, ACCOUNT_ID, NAME, TOKEN, GMT_CREATE, GMT_MODIFIED
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from USERS
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from USERS
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.mayou.community.pojo.User">
+    insert into USERS (ID, ACCOUNT_ID, NAME, 
+      TOKEN, GMT_CREATE, GMT_MODIFIED
+      )
+    values (#{id,jdbcType=INTEGER}, #{accountId,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
+      #{token,jdbcType=VARCHAR}, #{gmtCreate,jdbcType=BIGINT}, #{gmtModified,jdbcType=BIGINT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.mayou.community.pojo.User">
+    insert into USERS
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="accountId != null">
+        ACCOUNT_ID,
+      </if>
+      <if test="name != null">
+        NAME,
+      </if>
+      <if test="token != null">
+        TOKEN,
+      </if>
+      <if test="gmtCreate != null">
+        GMT_CREATE,
+      </if>
+      <if test="gmtModified != null">
+        GMT_MODIFIED,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="accountId != null">
+        #{accountId,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="token != null">
+        #{token,jdbcType=VARCHAR},
+      </if>
+      <if test="gmtCreate != null">
+        #{gmtCreate,jdbcType=BIGINT},
+      </if>
+      <if test="gmtModified != null">
+        #{gmtModified,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.mayou.community.pojo.User">
+    update USERS
+    <set>
+      <if test="accountId != null">
+        ACCOUNT_ID = #{accountId,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        NAME = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="token != null">
+        TOKEN = #{token,jdbcType=VARCHAR},
+      </if>
+      <if test="gmtCreate != null">
+        GMT_CREATE = #{gmtCreate,jdbcType=BIGINT},
+      </if>
+      <if test="gmtModified != null">
+        GMT_MODIFIED = #{gmtModified,jdbcType=BIGINT},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.mayou.community.pojo.User">
+    update USERS
+    set ACCOUNT_ID = #{accountId,jdbcType=VARCHAR},
+      NAME = #{name,jdbcType=VARCHAR},
+      TOKEN = #{token,jdbcType=VARCHAR},
+      GMT_CREATE = #{gmtCreate,jdbcType=BIGINT},
+      GMT_MODIFIED = #{gmtModified,jdbcType=BIGINT}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="com.mayou.community.pojo.User">
+    <id column="ID" jdbcType="INTEGER" property="id" />
+    <result column="ACCOUNT_ID" jdbcType="VARCHAR" property="accountId" />
+    <result column="NAME" jdbcType="VARCHAR" property="name" />
+    <result column="TOKEN" jdbcType="VARCHAR" property="token" />
+    <result column="GMT_CREATE" jdbcType="BIGINT" property="gmtCreate" />
+    <result column="GMT_MODIFIED" jdbcType="BIGINT" property="gmtModified" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ID, ACCOUNT_ID, NAME, TOKEN, GMT_CREATE, GMT_MODIFIED
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from USERS
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from USERS
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.mayou.community.pojo.User">
+    insert into USERS (ID, ACCOUNT_ID, NAME, 
+      TOKEN, GMT_CREATE, GMT_MODIFIED
+      )
+    values (#{id,jdbcType=INTEGER}, #{accountId,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
+      #{token,jdbcType=VARCHAR}, #{gmtCreate,jdbcType=BIGINT}, #{gmtModified,jdbcType=BIGINT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.mayou.community.pojo.User">
+    insert into USERS
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="accountId != null">
+        ACCOUNT_ID,
+      </if>
+      <if test="name != null">
+        NAME,
+      </if>
+      <if test="token != null">
+        TOKEN,
+      </if>
+      <if test="gmtCreate != null">
+        GMT_CREATE,
+      </if>
+      <if test="gmtModified != null">
+        GMT_MODIFIED,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="accountId != null">
+        #{accountId,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="token != null">
+        #{token,jdbcType=VARCHAR},
+      </if>
+      <if test="gmtCreate != null">
+        #{gmtCreate,jdbcType=BIGINT},
+      </if>
+      <if test="gmtModified != null">
+        #{gmtModified,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.mayou.community.pojo.User">
+    update USERS
+    <set>
+      <if test="accountId != null">
+        ACCOUNT_ID = #{accountId,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        NAME = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="token != null">
+        TOKEN = #{token,jdbcType=VARCHAR},
+      </if>
+      <if test="gmtCreate != null">
+        GMT_CREATE = #{gmtCreate,jdbcType=BIGINT},
+      </if>
+      <if test="gmtModified != null">
+        GMT_MODIFIED = #{gmtModified,jdbcType=BIGINT},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.mayou.community.pojo.User">
+    update USERS
+    set ACCOUNT_ID = #{accountId,jdbcType=VARCHAR},
+      NAME = #{name,jdbcType=VARCHAR},
+      TOKEN = #{token,jdbcType=VARCHAR},
+      GMT_CREATE = #{gmtCreate,jdbcType=BIGINT},
+      GMT_MODIFIED = #{gmtModified,jdbcType=BIGINT}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="com.mayou.community.pojo.User">
+    <id column="ID" jdbcType="INTEGER" property="id" />
+    <result column="ACCOUNT_ID" jdbcType="VARCHAR" property="accountId" />
+    <result column="NAME" jdbcType="VARCHAR" property="name" />
+    <result column="TOKEN" jdbcType="VARCHAR" property="token" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.mayou.community.pojo.UserWithBLOBs">
+    <result column="GMT_CREATE" jdbcType="LONGVARCHAR" property="gmtCreate" />
+    <result column="GMT_MODIFIED" jdbcType="LONGVARCHAR" property="gmtModified" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ID, ACCOUNT_ID, NAME, TOKEN
+  </sql>
+  <sql id="Blob_Column_List">
+    GMT_CREATE, GMT_MODIFIED
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from USERS
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from USERS
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.mayou.community.pojo.UserWithBLOBs">
+    insert into USERS (ID, ACCOUNT_ID, NAME, 
+      TOKEN, GMT_CREATE, GMT_MODIFIED
+      )
+    values (#{id,jdbcType=INTEGER}, #{accountId,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
+      #{token,jdbcType=VARCHAR}, #{gmtCreate,jdbcType=LONGVARCHAR}, #{gmtModified,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.mayou.community.pojo.UserWithBLOBs">
+    insert into USERS
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="accountId != null">
+        ACCOUNT_ID,
+      </if>
+      <if test="name != null">
+        NAME,
+      </if>
+      <if test="token != null">
+        TOKEN,
+      </if>
+      <if test="gmtCreate != null">
+        GMT_CREATE,
+      </if>
+      <if test="gmtModified != null">
+        GMT_MODIFIED,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="accountId != null">
+        #{accountId,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="token != null">
+        #{token,jdbcType=VARCHAR},
+      </if>
+      <if test="gmtCreate != null">
+        #{gmtCreate,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="gmtModified != null">
+        #{gmtModified,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.mayou.community.pojo.UserWithBLOBs">
+    update USERS
+    <set>
+      <if test="accountId != null">
+        ACCOUNT_ID = #{accountId,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        NAME = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="token != null">
+        TOKEN = #{token,jdbcType=VARCHAR},
+      </if>
+      <if test="gmtCreate != null">
+        GMT_CREATE = #{gmtCreate,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="gmtModified != null">
+        GMT_MODIFIED = #{gmtModified,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.mayou.community.pojo.UserWithBLOBs">
+    update USERS
+    set ACCOUNT_ID = #{accountId,jdbcType=VARCHAR},
+      NAME = #{name,jdbcType=VARCHAR},
+      TOKEN = #{token,jdbcType=VARCHAR},
+      GMT_CREATE = #{gmtCreate,jdbcType=LONGVARCHAR},
+      GMT_MODIFIED = #{gmtModified,jdbcType=LONGVARCHAR}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.mayou.community.pojo.User">
+    update USERS
+    set ACCOUNT_ID = #{accountId,jdbcType=VARCHAR},
+      NAME = #{name,jdbcType=VARCHAR},
+      TOKEN = #{token,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="com.mayou.community.pojo.User">
+    <id column="ID" jdbcType="INTEGER" property="id" />
+    <result column="ACCOUNT_ID" jdbcType="VARCHAR" property="accountId" />
+    <result column="NAME" jdbcType="VARCHAR" property="name" />
+    <result column="TOKEN" jdbcType="VARCHAR" property="token" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.mayou.community.pojo.UserWithBLOBs">
+    <result column="GMT_CREATE" jdbcType="LONGVARCHAR" property="gmtCreate" />
+    <result column="GMT_MODIFIED" jdbcType="LONGVARCHAR" property="gmtModified" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ID, ACCOUNT_ID, NAME, TOKEN
+  </sql>
+  <sql id="Blob_Column_List">
+    GMT_CREATE, GMT_MODIFIED
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from USERS
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from USERS
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.mayou.community.pojo.UserWithBLOBs">
+    insert into USERS (ID, ACCOUNT_ID, NAME, 
+      TOKEN, GMT_CREATE, GMT_MODIFIED
+      )
+    values (#{id,jdbcType=INTEGER}, #{accountId,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
+      #{token,jdbcType=VARCHAR}, #{gmtCreate,jdbcType=LONGVARCHAR}, #{gmtModified,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.mayou.community.pojo.UserWithBLOBs">
+    insert into USERS
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="accountId != null">
+        ACCOUNT_ID,
+      </if>
+      <if test="name != null">
+        NAME,
+      </if>
+      <if test="token != null">
+        TOKEN,
+      </if>
+      <if test="gmtCreate != null">
+        GMT_CREATE,
+      </if>
+      <if test="gmtModified != null">
+        GMT_MODIFIED,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="accountId != null">
+        #{accountId,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="token != null">
+        #{token,jdbcType=VARCHAR},
+      </if>
+      <if test="gmtCreate != null">
+        #{gmtCreate,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="gmtModified != null">
+        #{gmtModified,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.mayou.community.pojo.UserWithBLOBs">
+    update USERS
+    <set>
+      <if test="accountId != null">
+        ACCOUNT_ID = #{accountId,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        NAME = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="token != null">
+        TOKEN = #{token,jdbcType=VARCHAR},
+      </if>
+      <if test="gmtCreate != null">
+        GMT_CREATE = #{gmtCreate,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="gmtModified != null">
+        GMT_MODIFIED = #{gmtModified,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.mayou.community.pojo.UserWithBLOBs">
+    update USERS
+    set ACCOUNT_ID = #{accountId,jdbcType=VARCHAR},
+      NAME = #{name,jdbcType=VARCHAR},
+      TOKEN = #{token,jdbcType=VARCHAR},
+      GMT_CREATE = #{gmtCreate,jdbcType=LONGVARCHAR},
+      GMT_MODIFIED = #{gmtModified,jdbcType=LONGVARCHAR}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.mayou.community.pojo.User">
+    update USERS
+    set ACCOUNT_ID = #{accountId,jdbcType=VARCHAR},
+      NAME = #{name,jdbcType=VARCHAR},
+      TOKEN = #{token,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="com.mayou.community.pojo.User">
+    <id column="ID" jdbcType="INTEGER" property="id" />
+    <result column="ACCOUNT_ID" jdbcType="VARCHAR" property="accountId" />
+    <result column="NAME" jdbcType="VARCHAR" property="name" />
+    <result column="TOKEN" jdbcType="VARCHAR" property="token" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.mayou.community.pojo.UserWithBLOBs">
+    <result column="GMT_CREATE" jdbcType="LONGVARCHAR" property="gmtCreate" />
+    <result column="GMT_MODIFIED" jdbcType="LONGVARCHAR" property="gmtModified" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ID, ACCOUNT_ID, NAME, TOKEN
+  </sql>
+  <sql id="Blob_Column_List">
+    GMT_CREATE, GMT_MODIFIED
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from USERS
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from USERS
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.mayou.community.pojo.UserWithBLOBs">
+    insert into USERS (ID, ACCOUNT_ID, NAME, 
+      TOKEN, GMT_CREATE, GMT_MODIFIED
+      )
+    values (#{id,jdbcType=INTEGER}, #{accountId,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
+      #{token,jdbcType=VARCHAR}, #{gmtCreate,jdbcType=LONGVARCHAR}, #{gmtModified,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.mayou.community.pojo.UserWithBLOBs">
+    insert into USERS
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="accountId != null">
+        ACCOUNT_ID,
+      </if>
+      <if test="name != null">
+        NAME,
+      </if>
+      <if test="token != null">
+        TOKEN,
+      </if>
+      <if test="gmtCreate != null">
+        GMT_CREATE,
+      </if>
+      <if test="gmtModified != null">
+        GMT_MODIFIED,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="accountId != null">
+        #{accountId,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="token != null">
+        #{token,jdbcType=VARCHAR},
+      </if>
+      <if test="gmtCreate != null">
+        #{gmtCreate,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="gmtModified != null">
+        #{gmtModified,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.mayou.community.pojo.UserWithBLOBs">
+    update USERS
+    <set>
+      <if test="accountId != null">
+        ACCOUNT_ID = #{accountId,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        NAME = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="token != null">
+        TOKEN = #{token,jdbcType=VARCHAR},
+      </if>
+      <if test="gmtCreate != null">
+        GMT_CREATE = #{gmtCreate,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="gmtModified != null">
+        GMT_MODIFIED = #{gmtModified,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.mayou.community.pojo.UserWithBLOBs">
+    update USERS
+    set ACCOUNT_ID = #{accountId,jdbcType=VARCHAR},
+      NAME = #{name,jdbcType=VARCHAR},
+      TOKEN = #{token,jdbcType=VARCHAR},
+      GMT_CREATE = #{gmtCreate,jdbcType=LONGVARCHAR},
+      GMT_MODIFIED = #{gmtModified,jdbcType=LONGVARCHAR}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.mayou.community.pojo.User">
+    update USERS
+    set ACCOUNT_ID = #{accountId,jdbcType=VARCHAR},
+      NAME = #{name,jdbcType=VARCHAR},
+      TOKEN = #{token,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="com.mayou.community.pojo.User">
+    <id column="ID" jdbcType="INTEGER" property="id" />
+    <result column="ACCOUNT_ID" jdbcType="VARCHAR" property="accountId" />
+    <result column="NAME" jdbcType="VARCHAR" property="name" />
+    <result column="TOKEN" jdbcType="VARCHAR" property="token" />
+    <result column="GMT_CREATE" jdbcType="LONG" property="gmtCreate" />
+    <result column="GMT_MODIFIED" jdbcType="LONG" property="gmtModified" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ID, ACCOUNT_ID, NAME, TOKEN, GMT_CREATE, GMT_MODIFIED
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from USERS
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from USERS
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.mayou.community.pojo.User">
+    insert into USERS (ID, ACCOUNT_ID, NAME, 
+      TOKEN, GMT_CREATE, GMT_MODIFIED
+      )
+    values (#{id,jdbcType=INTEGER}, #{accountId,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
+      #{token,jdbcType=VARCHAR}, #{gmtCreate,jdbcType=LONG}, #{gmtModified,jdbcType=LONG}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.mayou.community.pojo.User">
+    insert into USERS
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="accountId != null">
+        ACCOUNT_ID,
+      </if>
+      <if test="name != null">
+        NAME,
+      </if>
+      <if test="token != null">
+        TOKEN,
+      </if>
+      <if test="gmtCreate != null">
+        GMT_CREATE,
+      </if>
+      <if test="gmtModified != null">
+        GMT_MODIFIED,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="accountId != null">
+        #{accountId,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="token != null">
+        #{token,jdbcType=VARCHAR},
+      </if>
+      <if test="gmtCreate != null">
+        #{gmtCreate,jdbcType=LONG},
+      </if>
+      <if test="gmtModified != null">
+        #{gmtModified,jdbcType=LONG},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.mayou.community.pojo.User">
+    update USERS
+    <set>
+      <if test="accountId != null">
+        ACCOUNT_ID = #{accountId,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        NAME = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="token != null">
+        TOKEN = #{token,jdbcType=VARCHAR},
+      </if>
+      <if test="gmtCreate != null">
+        GMT_CREATE = #{gmtCreate,jdbcType=LONG},
+      </if>
+      <if test="gmtModified != null">
+        GMT_MODIFIED = #{gmtModified,jdbcType=LONG},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.mayou.community.pojo.User">
+    update USERS
+    set ACCOUNT_ID = #{accountId,jdbcType=VARCHAR},
+      NAME = #{name,jdbcType=VARCHAR},
+      TOKEN = #{token,jdbcType=VARCHAR},
+      GMT_CREATE = #{gmtCreate,jdbcType=LONG},
+      GMT_MODIFIED = #{gmtModified,jdbcType=LONG}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

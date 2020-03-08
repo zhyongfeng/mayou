@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mayou.community.dao.com.mayou.community.pojo.UserMapper">
+  <resultMap id="BaseResultMap" type="com.mayou.community.pojo.com.mayou.community.pojo.User">
+    <constructor>
+      <idArg column="id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="uid" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="uname" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="ugender" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="uaddress" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="ubalance" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="uavatar" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="skey" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="sessionkey" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="create_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="update_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, uid, uname, ugender, uaddress, ubalance, uavatar, skey, sessionkey, create_time, 
+    update_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from users
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from users
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.mayou.community.pojo.com.mayou.community.pojo.User">
+    insert into users (id, uid, uname, 
+      ugender, uaddress, ubalance, 
+      uavatar, skey, sessionkey, 
+      create_time, update_time)
+    values (#{id,jdbcType=INTEGER}, #{uid,jdbcType=VARCHAR}, #{uname,jdbcType=VARCHAR}, 
+      #{ugender,jdbcType=INTEGER}, #{uaddress,jdbcType=VARCHAR}, #{ubalance,jdbcType=INTEGER}, 
+      #{uavatar,jdbcType=VARCHAR}, #{skey,jdbcType=VARCHAR}, #{sessionkey,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.mayou.community.pojo.com.mayou.community.pojo.User">
+    insert into users
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="uid != null">
+        uid,
+      </if>
+      <if test="uname != null">
+        uname,
+      </if>
+      <if test="ugender != null">
+        ugender,
+      </if>
+      <if test="uaddress != null">
+        uaddress,
+      </if>
+      <if test="ubalance != null">
+        ubalance,
+      </if>
+      <if test="uavatar != null">
+        uavatar,
+      </if>
+      <if test="skey != null">
+        skey,
+      </if>
+      <if test="sessionkey != null">
+        sessionkey,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="uid != null">
+        #{uid,jdbcType=VARCHAR},
+      </if>
+      <if test="uname != null">
+        #{uname,jdbcType=VARCHAR},
+      </if>
+      <if test="ugender != null">
+        #{ugender,jdbcType=INTEGER},
+      </if>
+      <if test="uaddress != null">
+        #{uaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="ubalance != null">
+        #{ubalance,jdbcType=INTEGER},
+      </if>
+      <if test="uavatar != null">
+        #{uavatar,jdbcType=VARCHAR},
+      </if>
+      <if test="skey != null">
+        #{skey,jdbcType=VARCHAR},
+      </if>
+      <if test="sessionkey != null">
+        #{sessionkey,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.mayou.community.pojo.com.mayou.community.pojo.User">
+    update users
+    <set>
+      <if test="uid != null">
+        uid = #{uid,jdbcType=VARCHAR},
+      </if>
+      <if test="uname != null">
+        uname = #{uname,jdbcType=VARCHAR},
+      </if>
+      <if test="ugender != null">
+        ugender = #{ugender,jdbcType=INTEGER},
+      </if>
+      <if test="uaddress != null">
+        uaddress = #{uaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="ubalance != null">
+        ubalance = #{ubalance,jdbcType=INTEGER},
+      </if>
+      <if test="uavatar != null">
+        uavatar = #{uavatar,jdbcType=VARCHAR},
+      </if>
+      <if test="skey != null">
+        skey = #{skey,jdbcType=VARCHAR},
+      </if>
+      <if test="sessionkey != null">
+        sessionkey = #{sessionkey,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.mayou.community.pojo.com.mayou.community.pojo.User">
+    update users
+    set uid = #{uid,jdbcType=VARCHAR},
+      uname = #{uname,jdbcType=VARCHAR},
+      ugender = #{ugender,jdbcType=INTEGER},
+      uaddress = #{uaddress,jdbcType=VARCHAR},
+      ubalance = #{ubalance,jdbcType=INTEGER},
+      uavatar = #{uavatar,jdbcType=VARCHAR},
+      skey = #{skey,jdbcType=VARCHAR},
+      sessionkey = #{sessionkey,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="com.mayou.community.pojo.com.mayou.community.pojo.User">
+    <constructor>
+      <arg column="USER" javaType="java.lang.String" jdbcType="CHAR" />
+      <arg column="CURRENT_CONNECTIONS" javaType="java.lang.Long" jdbcType="BIGINT" />
+      <arg column="TOTAL_CONNECTIONS" javaType="java.lang.Long" jdbcType="BIGINT" />
+    </constructor>
+  </resultMap>
+  <insert id="insert" parameterType="com.mayou.community.pojo.com.mayou.community.pojo.User">
+    insert into users (USER, CURRENT_CONNECTIONS, TOTAL_CONNECTIONS
+      )
+    values (#{user,jdbcType=CHAR}, #{currentConnections,jdbcType=BIGINT}, #{totalConnections,jdbcType=BIGINT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.mayou.community.pojo.com.mayou.community.pojo.User">
+    insert into users
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="user != null">
+        USER,
+      </if>
+      <if test="currentConnections != null">
+        CURRENT_CONNECTIONS,
+      </if>
+      <if test="totalConnections != null">
+        TOTAL_CONNECTIONS,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="user != null">
+        #{user,jdbcType=CHAR},
+      </if>
+      <if test="currentConnections != null">
+        #{currentConnections,jdbcType=BIGINT},
+      </if>
+      <if test="totalConnections != null">
+        #{totalConnections,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <resultMap id="BaseResultMap" type="com.mayou.community.pojo.com.mayou.community.pojo.User">
+    <constructor>
+      <arg column="ID" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="ACCOUNT_ID" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="NAME" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="TOKEN" javaType="java.lang.String" jdbcType="VARCHAR" />
+    </constructor>
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.mayou.community.pojo.com.mayou.community.pojo.UserWithBLOBs">
+    <constructor>
+      <arg column="ID" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="ACCOUNT_ID" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="NAME" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="TOKEN" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="GMT_CREATE" javaType="java.lang.String" jdbcType="LONGVARCHAR" />
+      <arg column="GMT_MODIFIED" javaType="java.lang.String" jdbcType="LONGVARCHAR" />
+    </constructor>
+  </resultMap>
+  <sql id="Blob_Column_List">
+    GMT_CREATE, GMT_MODIFIED
+  </sql>
+  <insert id="insert" parameterType="com.mayou.community.pojo.com.mayou.community.pojo.UserWithBLOBs">
+    insert into USERS (ID, ACCOUNT_ID, NAME, 
+      TOKEN, GMT_CREATE, GMT_MODIFIED
+      )
+    values (#{id,jdbcType=INTEGER}, #{accountId,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
+      #{token,jdbcType=VARCHAR}, #{gmtCreate,jdbcType=LONGVARCHAR}, #{gmtModified,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.mayou.community.pojo.com.mayou.community.pojo.UserWithBLOBs">
+    insert into USERS
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="accountId != null">
+        ACCOUNT_ID,
+      </if>
+      <if test="name != null">
+        NAME,
+      </if>
+      <if test="token != null">
+        TOKEN,
+      </if>
+      <if test="gmtCreate != null">
+        GMT_CREATE,
+      </if>
+      <if test="gmtModified != null">
+        GMT_MODIFIED,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="accountId != null">
+        #{accountId,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="token != null">
+        #{token,jdbcType=VARCHAR},
+      </if>
+      <if test="gmtCreate != null">
+        #{gmtCreate,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="gmtModified != null">
+        #{gmtModified,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>
