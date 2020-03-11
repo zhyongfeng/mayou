@@ -1,9 +1,7 @@
 package com.mayou.community.dao;
 
 import com.mayou.community.pojo.User;
-import org.springframework.stereotype.Component;
 
-@Component
 public interface UserDao {
     int deleteByPrimaryKey(Integer id);
 

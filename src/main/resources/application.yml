@@ -39,15 +39,13 @@ spring:
       max-open-prepared-statements: 50
       max-pool-prepared-statement-per-connection-size: 20
 
-mybatis:
-  configuration:
-    map-underscore-to-camel-case: true
-    type-aliases-package: cn.mayou.community.pojo
-    mapper-locations: classpath*:/mapper/*Mapper.xml
-
 #pagehelper分页插件
 pagehelper:
   helperDialect: mysql
   reasonable: true
   supportMethodsArguments: true
   params: count=countSql
+
+mybatis:
+  type-aliases-package: com.mayou.community.pojo
+  mapper-locations: classpath:mappers/*.xml

@@ -1,8 +1,8 @@
 package com.mayou.community.controller;
 
-import com.mayou.community.pojo.User;
 import com.mayou.community.dto.AccessTokenDTO;
 import com.mayou.community.dto.GithubUser;
+import com.mayou.community.pojo.User;
 import com.mayou.community.provider.GithubProvider;
 import com.mayou.community.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,10 +11,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.util.UUID;
+import javax.servlet.http.HttpSession;
 
 /**
  * @author yfzhang
@@ -40,8 +38,7 @@ public class AuthorizeController {
     @GetMapping("/callback")
     public String callback(@RequestParam(name = "code") String code,
                            @RequestParam(name = "state") String state,
-                           HttpServletRequest request,
-                           HttpServletResponse response) {
+                           HttpServletRequest request) {
         AccessTokenDTO accessTokenDTO = new AccessTokenDTO();
         accessTokenDTO.setClient_id(clientId);
         accessTokenDTO.setClient_secret(clientSecret);
@@ -52,16 +49,13 @@ public class AuthorizeController {
         GithubUser githubUser = githubProvider.getUser(access_token);
         if (null != githubUser) {
             User user = new User();
-            String token = UUID.randomUUID().toString();
-            user.setToken(token);
-            user.setName("永峰");
-            user.setAccountId("Arthur");
-            user.setGmtCreate(System.currentTimeMillis());
-            user.setGmtModified(user.getGmtCreate());
+            user.setToken("token");
+            user.setName(githubUser.getName());
+            user.setAccountId(String.valueOf(githubUser.getId()));
             int result = userService.insert(user);
             if (result > 0) {
-                //登录成功，写cookie和session
-                response.addCookie(new Cookie("token", token));
+                HttpSession session = request.getSession();
+                session.setAttribute("userName", user.getName());
             }
             return "redirect:/";
         } else {
@@ -73,7 +67,7 @@ public class AuthorizeController {
     @GetMapping("/logout")
     public String callback(
             HttpServletRequest request) {
-        request.getSession().setAttribute("user", null);
+        request.getSession().setAttribute("userName", null);
         return "redirect:/";
 
     }

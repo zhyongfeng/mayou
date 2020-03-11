@@ -9,10 +9,6 @@ public class User {
 
     private String token;
 
-    private Long gmtCreate;
-
-    private Long gmtModified;
-
     public Integer getId() {
         return id;
     }
@@ -43,21 +39,5 @@ public class User {
 
     public void setToken(String token) {
         this.token = token == null ? null : token.trim();
-    }
-
-    public Long getGmtCreate() {
-        return gmtCreate;
-    }
-
-    public void setGmtCreate(Long gmtCreate) {
-        this.gmtCreate = gmtCreate;
-    }
-
-    public Long getGmtModified() {
-        return gmtModified;
-    }
-
-    public void setGmtModified(Long gmtModified) {
-        this.gmtModified = gmtModified;
     }
 }

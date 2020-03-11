@@ -23,16 +23,16 @@
                 <a class="nav-link" href="#">码友社区 <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/callback">全部话题</a>
+                <a class="nav-link" href="/topics">全部话题</a>
             </li>
-            <li class="nav-item" th:if="${session.user == null}">
+            <li class="nav-item" th:if="${session.userName == null}">
                 <a class="nav-link"
                    href="https://github.com/login/oauth/authorize?client_id=26edd1fe7e691c85dbbc&redirect_uri=http://localhost/callback&scope=user&state=1">登录</a>
             </li>
-            <li class="nav-item dropdown" th:unless="${session.user == null}">
+            <li class="nav-item dropdown" th:unless="${session.userName == null}">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
                    aria-haspopup="true" aria-expanded="false">
-                    我
+                    <div th:nowrap="${session.userName}"></div>
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item" href="#">个人中心</a>
@@ -43,8 +43,6 @@
             </li>
         </ul>
     </div>
-    <a href="mailto:zhangyongfeng4@gome.com.cn">email: zhangyongfeng4@gome.com.cn</a>
-
 </nav>
 </body>
 </html>
