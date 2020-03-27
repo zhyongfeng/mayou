@@ -10,8 +10,9 @@ github:
 
 spring:
   devtools:
-    restart:
       additional-paths: static/**,public/**
+      restart:
+        enabled: true
   profiles:
     active: "@activatedProperties@"
   application:
@@ -49,3 +50,4 @@ pagehelper:
 mybatis:
   type-aliases-package: com.mayou.community.pojo
   mapper-locations: classpath:mappers/*.xml
+

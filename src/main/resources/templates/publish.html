@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>码友社区</title>
+    <title>发布</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
     <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
@@ -32,7 +32,7 @@
             <li class="nav-item dropdown" th:unless="${session.user == null}">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
                    aria-haspopup="true" aria-expanded="false">
-                    <div th:nowrap="${session.user.getName()}"></div>
+                    <div th:nowrap="${session.user}"></div>
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item" href="#">个人中心</a>
@@ -44,5 +44,15 @@
         </ul>
     </div>
 </nav>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class=".col-6 .col-sm-4"></div>
+        <div class=".col-6 .col-sm-4"></div>
+
+    </div>
+</div>
+
+
 </body>
 </html>

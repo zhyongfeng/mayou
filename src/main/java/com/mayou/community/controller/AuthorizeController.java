@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.util.UUID;
 
 /**
  * @author yfzhang
@@ -49,13 +50,13 @@ public class AuthorizeController {
         GithubUser githubUser = githubProvider.getUser(access_token);
         if (null != githubUser) {
             User user = new User();
-            user.setToken("token");
+            user.setToken(UUID.randomUUID().toString());
             user.setName(githubUser.getName());
             user.setAccountId(String.valueOf(githubUser.getId()));
             int result = userService.insert(user);
             if (result > 0) {
                 HttpSession session = request.getSession();
-                session.setAttribute("userName", user.getName());
+                session.setAttribute("user", githubUser);
             }
             return "redirect:/";
         } else {
