@@ -11,7 +11,7 @@
     <groupId>com.mayou</groupId>
     <artifactId>mayou</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>community</name>
+    <name>mayou</name>
     <description>community project with Spring Boot</description>
 
     <properties>
